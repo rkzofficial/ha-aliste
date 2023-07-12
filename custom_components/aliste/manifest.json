@@ -1,0 +1,21 @@
+{
+  "domain": "aliste",
+  "name": "Aliste",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/aliste",
+  "requirements": [
+    "aliste==0.1.6",
+    "aiohttp==3.8.4",
+    "asyncio==3.4.3",
+    "python-socketio"
+  ],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": [
+    "@Kir4Kun"
+  ],
+  "iot_class": "cloud_push",
+  "version": "0.2.10"
+}

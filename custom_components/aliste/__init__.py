@@ -18,10 +18,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     hass.data.setdefault(DOMAIN, {})
 
-    async with AlisteHub() as hub:
-        await hub.init(entry.data["username"], entry.data["password"])
-        hass.data[DOMAIN][entry.entry_id] = hub
-
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True

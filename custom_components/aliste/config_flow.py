@@ -32,7 +32,7 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> dict[str,
     async with AlisteHub() as hub:
         # pylint: disable=protected-access
         try:
-            await hub.authenticate(data["username"], data["password"])
+            await hub._authenticate(data["username"], data["password"])
         except Exception as exc:
             raise InvalidAuth from exc
 

@@ -4,10 +4,11 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/aliste",
   "requirements": [
-    "aliste==0.1.10",
+    "aliste==0.1.11",
     "aiohttp",
     "asyncio==3.4.3",
-    "python-socketio"
+    "aiomqtt==1.0.0",
+    "certifi==2023.5.7"
   ],
   "ssdp": [],
   "zeroconf": [],

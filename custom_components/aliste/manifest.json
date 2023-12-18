@@ -4,7 +4,7 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/aliste",
   "requirements": [
-    "aliste==0.1.12",
+    "aliste==0.1.13",
     "aiohttp",
     "asyncio==3.4.3",
     "aiomqtt==1.0.0",

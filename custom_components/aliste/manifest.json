@@ -4,12 +4,12 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/aliste",
   "requirements": [
-    "aliste==0.1.15",
-    "aiohttp",
     "asyncio==3.4.3",
-    "aiomqtt==1.0.0",
-    "certifi==2023.5.7",
-    "aws_signv4_mqtt==0.2.0"
+    "aiomqtt==2.0.1",
+    "aliste==1.0.0",
+    "certifi==2024.2.2",
+    "aws_signv4_mqtt==0.2.0",
+    "boto3=1.34.88"
   ],
   "ssdp": [],
   "zeroconf": [],

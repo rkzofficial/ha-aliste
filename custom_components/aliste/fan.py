@@ -106,8 +106,11 @@ class AlisteFan(FanEntity):
         """Return true if light is on."""
         return float(self._device.switchState) > 0
 
-    async def async_turn_on(self, **kwargs: Any) -> None:
-        await self._device.turn_on()
+    async def async_turn_on(self, speed: Optional[str] = None, percentage: Optional[int] = None, preset_mode: Optional[str] = None, **kwargs: Any) -> None:
+        if percentage is None:
+            await self._device.turn_on()
+        else:
+            await self._device.dim(percentage / 100)
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Instruct the light to turn off."""

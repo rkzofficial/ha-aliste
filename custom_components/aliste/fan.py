@@ -31,6 +31,7 @@ class AlisteFan(FanEntity):
     def __init__(self, device: AlisteDevice) -> None:
         """Initialize an Aliste Fan."""
         self._device = device
+        self.last_preset_mode = "Medium"
 
     @property
     def supported_features(self) -> FanEntityFeature:
@@ -70,7 +71,7 @@ class AlisteFan(FanEntity):
     @property
     def preset_mode(self) -> str | None:
         state = float(self._device.switchState)
-
+        
         if (state) > 0.75:
             return "Max"
         if state > 0.50:
@@ -79,7 +80,7 @@ class AlisteFan(FanEntity):
             return "Medium"
         if state > 0:
             return "Low"
-        return None
+        return self.last_preset_mode
 
     async def async_set_preset_mode(self, preset_mode: str) -> None:
         """Set the preset mode of the fan."""
@@ -91,6 +92,8 @@ class AlisteFan(FanEntity):
             await self._device.dim(0.75)
         if preset_mode == "Max":
             await self._device.dim(1.0)
+
+        self.last_preset_mode = preset_mode
 
     @property
     def percentage(self) -> Optional[int]:
@@ -107,10 +110,12 @@ class AlisteFan(FanEntity):
         return float(self._device.switchState) > 0
 
     async def async_turn_on(self, speed: Optional[str] = None, percentage: Optional[int] = None, preset_mode: Optional[str] = None, **kwargs: Any) -> None:
-        if percentage is None:
-            await self._device.turn_on()
-        else:
+        if preset_mode is not None:
+            await self.async_set_preset_mode(preset_mode)
+        elif percentage is not None:
             await self._device.dim(percentage / 100)
+        else:
+            await self.async_set_preset_mode(self.last_preset_mode)
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Instruct the light to turn off."""

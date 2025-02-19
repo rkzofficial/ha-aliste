@@ -36,7 +36,7 @@ class AlisteFan(FanEntity):
     @property
     def supported_features(self) -> FanEntityFeature:
         """Flag supported features."""
-        return FanEntityFeature.SET_SPEED | FanEntityFeature.PRESET_MODE
+        return FanEntityFeature.SET_SPEED | FanEntityFeature.PRESET_MODE | FanEntityFeature.TURN_OFF | FanEntityFeature.TURN_ON
 
     @property
     def preset_modes(self) -> list[str] | None:

@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any
 from aliste import Device as AlisteDevice, AlisteHub, DeviceType as AlisteDeviceType
 from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.components.light import LightEntity
+from homeassistant.components.light import ColorMode, LightEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -31,6 +31,16 @@ class AlisteLight(LightEntity):
     def __init__(self, light: AlisteDevice) -> None:
         """Initialize an Aliste Light."""
         self._device = light
+
+    @property
+    def supported_color_modes(self) -> set[str]:
+        """Return the supported color modes."""
+        return {ColorMode.ONOFF}
+
+    @property
+    def color_mode(self) -> str:
+        """Return the color mode of the light."""
+        return ColorMode.ONOFF
 
     @property
     def unique_id(self) -> str:

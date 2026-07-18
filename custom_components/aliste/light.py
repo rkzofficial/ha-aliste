@@ -68,6 +68,11 @@ class AlisteLight(LightEntity):
         """Return true if light is on."""
         return float(self._device.switchState) > 0
 
+    @property
+    def available(self) -> bool:
+        """Return whether the device is currently reachable."""
+        return self._device.available
+
     async def async_turn_on(self, **kwargs: Any) -> None:
         await self._device.turn_on()
 

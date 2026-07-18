@@ -109,6 +109,11 @@ class AlisteFan(FanEntity):
         """Return true if light is on."""
         return float(self._device.switchState) > 0
 
+    @property
+    def available(self) -> bool:
+        """Return whether the device is currently reachable."""
+        return self._device.available
+
     async def async_turn_on(self, speed: Optional[str] = None, percentage: Optional[int] = None, preset_mode: Optional[str] = None, **kwargs: Any) -> None:
         if preset_mode is not None:
             await self.async_set_preset_mode(preset_mode)

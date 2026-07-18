@@ -4,7 +4,7 @@
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/aliste",
   "requirements": [
-    "aliste==2.5.0",
+    "aliste==2.5.1",
     "python-socketio>=5.11.0",
     "aiomqtt>=2.0.1",
     "aws_signv4_mqtt>=0.2.0",
@@ -18,5 +18,5 @@
     "@Kir4Kun"
   ],
   "iot_class": "cloud_push",
-  "version": "0.6.0"
+  "version": "0.6.1"
 }
